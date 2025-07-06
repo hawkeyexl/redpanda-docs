@@ -61,6 +61,7 @@ jobs:
         if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'repository_dispatch' || github.event_name == 'schedule' }}
         uses: doc-detective/github-action@v1
         with:
+          version: dev
           input: ../../modules/get-started/pages/quick-start.adoc
           working_directory: redpanda-docs/tests/setup-tests
           exit_on_fail: true

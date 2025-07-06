@@ -49,9 +49,9 @@ jobs:
       #       ,sdlc/prod/github/actions_bot_token
       #     parse-json-secrets: true
       - uses: actions/checkout@v4
-        with:
-          token: ${{ env.ACTIONS_BOT_TOKEN }}
-          path: redpanda-docs
+        # with:
+        #   token: ${{ env.ACTIONS_BOT_TOKEN }}
+        #   path: redpanda-docs
 
       # - name: Set GitHub token
       #   run: |

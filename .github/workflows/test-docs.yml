@@ -17,45 +17,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      # - name: Determine changed paths
-      #   id: filter
-      #   uses: dorny/paths-filter@v3
-      #   with:
-      #     filters: |
-      #       console:
-      #         - 'modules/console/**'
-      #       quickstart:
-      #         - 'modules/get-started/pages/quick-start.adoc'
-
-  run-tests:
-    needs: setup
-    permissions:
-      contents: write
-      pull-requests: write
-      issues: write
-      id-token: write
-    strategy:
-      matrix:
-        os: [ubuntu-latest]  # Only using Linux for now since macOS takes a long time
-    runs-on: ${{ matrix.os }}
-    steps:
-      # - uses: aws-actions/configure-aws-credentials@v4
-      #   with:
-      #     aws-region: ${{ vars.RP_AWS_CRED_REGION }}
-      #     role-to-assume: arn:aws:iam::${{ secrets.RP_AWS_CRED_ACCOUNT_ID }}:role/${{ vars.RP_AWS_CRED_BASE_ROLE_NAME }}${{ github.event.repository.name }}
-      # - uses: aws-actions/aws-secretsmanager-get-secrets@v2
-      #   with:
-      #     secret-ids: |
-      #       ,sdlc/prod/github/actions_bot_token
-      #     parse-json-secrets: true
-      - uses: actions/checkout@v4
-        # with:
-        #   token: ${{ env.ACTIONS_BOT_TOKEN }}
-        #   path: redpanda-docs
-
-      # - name: Set GitHub token
-      #   run: |
-      #     echo "REDPANDA_GITHUB_TOKEN=${{ env.ACTIONS_BOT_TOKEN }}" >> $GITHUB_ENV
 
       - name: Run all tests
         if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'repository_dispatch' || github.event_name == 'schedule' }}
